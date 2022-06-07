@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/ShannTimothy22/space-tourism-website/issues"
   },
-  "homepage": "https://shanntimothy22.github.io/space-tourism-website/",
+  "homepage": "https://shanntimothy22.github.io/space-tourism-website",
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
     "sass": "^1.52.1"
