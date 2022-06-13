@@ -1,0 +1,200 @@
+@use "../base/fonts" as *;
+@use "../abstract/config" as *;
+
+.close{
+    transform: translateX(120%);
+}
+
+@media only screen and (min-width: 768px) {
+    .close{
+        transform: translateX(0%);
+    }
+  }
+
+body{
+    background: url("/assets/home/background-home-tablet.jpg") no-repeat center fixed;            
+    color: white;
+    background-size: cover; 
+}
+
+.introduction{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 2.5rem;
+    max-width: 85%;
+    margin: auto;
+
+    &__sub-title{
+        font-family: $ff-sans-cond;
+        font-weight: 400;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: .2rem;
+        margin-bottom: 1rem;
+    }
+
+    &__title{
+        font-family: $ff-serif;
+        font-size: 80px;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
+    &__text{
+        font-family: $ff-sans-normal;
+        font-size: 15px;
+        line-height: 1.5rem;
+    }
+
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    .explore{
+        font-family: $ff-serif;
+        width: 150px;
+        height: 150px;
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 400;
+        border-radius: 50%;
+        transition: all 0.5s ease;
+        border: none;
+    }
+    .explore:hover{
+        background-color: black;
+        color: white;
+    }    
+}
+
+@include media-md{
+    body{
+        background: url("/assets/home/background-home-tablet.jpg") no-repeat center;            
+        color: white;
+        height: 100vh;
+        background-size: cover;        
+    }    
+
+    .introduction{
+        padding-top: 5rem;
+        max-width: 65%;
+
+        &__sub-title{
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3.375px;
+            margin-bottom: 1rem;
+            color: #D0D6F9;
+        }
+    
+        &__title{
+            font-family: $ff-serif;
+            font-size: 150px;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+    
+        &__text{
+            font-family: $ff-sans-normal;
+            font-size: 16px;
+            line-height: 28px;
+            color: #D0D6F9;
+        }
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+        margin-top: 10rem;
+        
+
+        .explore{
+            font-family: $ff-serif;
+            width: 242px;
+            height: 242px;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: 400;
+            border-radius: 50%;
+            transition: all 0.5s ease;
+            border: none;
+        }
+        .explore:hover{
+            background-color: black;
+            color: white;
+        }    
+    }
+    
+}
+
+@media only screen and (min-width: 1440px) {    
+    body{
+        background: url("/assets/home/background-home-desktop.jpg") no-repeat;        
+        background-size: cover;
+    }
+
+    .introduction{
+        display: flex;
+        flex-direction: row;        
+        justify-content: space-around;
+        padding-top: 15rem;
+        max-width: 100%;
+        text-align: left;
+
+        .text-container{
+            max-width: 32%;
+        }
+
+        &__sub-title{
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 3.375px;
+            margin-bottom: 1rem;
+            color: #D0D6F9;
+        }
+    
+        &__title{
+            font-family: $ff-serif;
+            font-size: 150px;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+    
+        &__text{
+            font-family: $ff-sans-normal;
+            font-size: 18px;
+            line-height: 28px;
+            color: #D0D6F9;
+        }
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+        margin-top: 7rem;                
+
+        .explore{
+            font-family: $ff-serif;
+            width: 274px;
+            height: 274px;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: 400;
+            border-radius: 50%;
+            transition: all 0.5s ease;
+            border: none;
+        }
+        .explore:hover{
+            background-color: black;
+            color: white;
+        }    
+    }
+}

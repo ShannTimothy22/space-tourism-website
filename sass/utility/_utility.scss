@@ -1,0 +1,244 @@
+@use "../base/fonts" as *;
+
+.flex{
+    display: flex;
+    gap: --gap, 1rem;
+}
+
+.grid{
+    display: grid;
+    gap: --gap, 1rem;
+}
+
+.container{
+    padding-inline: 2em;
+    margin-inline: auto;
+    max-width: 80rem;
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.bg-dark{
+    background-color: hsl( $clr-dark );
+}
+
+.bg-accent{
+    background-color: hsl( $clr-light );
+}
+
+.bg-white{
+    background-color: hsl( $clr-white );
+}
+
+.text-dark{
+    color: hsl( $clr-dark );
+}
+
+.text-accent{
+    color: hsl( $clr-light );
+}
+
+.text-white{
+    color: hsl( $clr-white );
+}
+
+.box{    
+    border: 1px solid white;
+}
+
+.ff-serif{
+    font-family: $ff-serif;
+}
+
+.ff-sans-cond{
+    font-family: $ff-sans-cond;
+}
+
+.ff-sans-normal{
+    font-family: $ff-sans-normal;
+}
+
+.letter-spacing-1{
+    letter-spacing: 4.75px;
+}
+
+.letter-spacing-2{
+    letter-spacing: 2.7px;
+}
+
+.letter-spacing-3{
+    letter-spacing: 2.35px;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+.fs-900{
+    font-size: $fs-900;
+}
+
+.fs-800{
+    font-size: $fs-800;
+}
+
+.fs-700{
+    font-size: $fs-700;
+}
+
+.fs-600{
+    font-size: $fs-600;
+}
+
+.fs-500{
+    font-size: $fs-500;
+}
+
+.fs-400{
+    font-size: $fs-400;
+}
+
+.fs-300{
+    font-size: $fs-300;
+}
+
+.fs-200{
+    font-size: $fs-200;
+}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600{
+    line-height: 1.1;
+}
+
+.numbered-title{
+    font-family: $ff-sans-cond;
+    font-size: $fs-500;
+    text-transform: uppercase;
+    letter-spacing: 4.72px;    
+}
+
+.numbered-title span{
+    margin-right: 0.5em;
+    font-weight: 700;
+    color: hsl( $clr-white ) , .2;
+}
+
+.large-btn{
+    position: relative;
+    display: grid;
+    z-index: 1;
+    padding-inline: 2em;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    place-items: center;
+    text-decoration: none;    
+}
+
+.large-btn::after{
+    content: '';
+    position: absolute;
+    background-color: hsl( 0 0% 100% /.15);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    transition:opacity 500ms linear, transform 500ms ease-in-out;
+}
+
+.large-btn:hover::after,
+.large-btn:focus::after{
+    opacity: 1;
+    transform: scale(1.5);
+}
+
+.primary-navigation{
+    --gap: 8rem;
+    --underline-gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.primary-navigation a{
+    text-decoration: none;
+}
+
+.primary-navigation a > span{
+    font-weight: 700;
+    margin-right: 0.5em;
+}
+
+.underline-indicator > *{
+    cursor: pointer;
+    padding: (--underline-gap, 1rem) 0;
+    border: 0;
+    border-bottom: .2rem solid hsl( $clr-white) , 0;    
+}
+
+.underline-indicator > *:hover,
+.underline-indicator > *:focus{
+    border-color: hsl( $clr-white) , .5;
+}
+
+.underline-indicator > .active,
+.underline-indicator > [aria-selected="true"]{
+    color: hsl( $clr-white) , 1;
+    border-color: hsl( $clr-white) , 1;
+}
+
+.tab-list{
+    $gap: 2rem;
+}
+
+.dots-indicator > *{
+    cursor: pointer;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    background-color: hsl( $clr-white) , .17;
+    border: 0;
+    padding: .5em;
+}
+
+.dots-indicator > *:hover{
+    background-color: hsl( $clr-white) , .5;    
+}
+
+.dots-indicator > .active{
+    background-color: hsl( $clr-white) , 1;    
+}
+
+.number-list > *{
+    cursor: pointer;
+    padding-inline: 2em;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    background-color: hsl( $clr-dark) ;
+    color: hsl( $clr-white) ;
+    border: 1px solid hsl( $clr-white) , .25;
+}
+
+.number-list > *:hover,
+.number-list > *:focus{
+    background-color: $clr-dark;
+    border-color: hsl( $clr-white) ;
+    color: $clr-white;
+}
+
+.number-list > .active{
+    background-color: hsl( $clr-white) ;
+    color: hsl( $clr-dark);
+}
