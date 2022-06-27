@@ -47,11 +47,15 @@ a{
 
 body{
   font-family: $ff-sans-normal;
-  font-size: $fs-400;
+  font-size: var(--fs-400);
   background-color: hsl( $clr-dark );
   color: hsl($clr-white);
   line-height: 1.5;
   min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  overflow-x: hidden;
 }
 
 img,
@@ -64,7 +68,7 @@ input,
 button,
 textarea,
 select{
-    font: inherit;
+    font: inherit;    
 }
 
 @media (prefers-reduced-motion: reduce){

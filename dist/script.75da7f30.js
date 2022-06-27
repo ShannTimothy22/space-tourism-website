@@ -118,15 +118,152 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"script.js":[function(require,module,exports) {
-var hamburger = document.querySelector(".icon-hamburger");
-var sidebar = document.querySelector(".side-nav");
-var close = document.querySelector(".icon-close");
-hamburger.addEventListener("click", function () {
-  sidebar.classList.remove("close");
+//home
+var nav = document.querySelector(".primary-navigation");
+var navtoggle = document.querySelector(".mobile-nav-toggle");
+navtoggle.addEventListener("click", function () {
+  var visibility = nav.getAttribute("data-visible");
+
+  if (visibility === "false") {
+    navtoggle.setAttribute("aria-expanded", true);
+    nav.setAttribute("data-visible", true);
+  } else {
+    nav.setAttribute("data-visible", false);
+    navtoggle.setAttribute("aria-expanded", false);
+  }
+}); //destination
+
+var destination = [{
+  "name": "Moon",
+  "images": {
+    "png": "./assets/destination/image-moon.png",
+    "webp": "./assets/destination/image-moon.webp"
+  },
+  "description": "See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.",
+  "distance": "384,400 km",
+  "travel": "3 days"
+}, {
+  "name": "Mars",
+  "images": {
+    "png": "./assets/destination/image-mars.png",
+    "webp": "./assets/destination/image-mars.webp"
+  },
+  "description": "Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest!",
+  "distance": "225 mil. km",
+  "travel": "9 months"
+}, {
+  "name": "Europa",
+  "images": {
+    "png": "./assets/destination/image-europa.png",
+    "webp": "./assets/destination/image-europa.webp"
+  },
+  "description": "The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or simple relaxation in your snug wintery cabin.",
+  "distance": "628 mil. km",
+  "travel": "3 years"
+}, {
+  "name": "Titan",
+  "images": {
+    "png": "./assets/destination/image-titan.png",
+    "webp": "./assets/destination/image-titan.webp"
+  },
+  "description": "The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of Saturn.",
+  "distance": "1.6 bil. km",
+  "travel": "7 years"
+}];
+var destinationInfo = document.querySelector(".destination-info");
+var planetList = document.querySelector(".planet-list");
+window.addEventListener("DOMContentLoaded", function () {
+  displayPlanetInfo(destination);
+  displayPlanetName();
 });
-close.addEventListener("click", function () {
-  sidebar.classList.add("close");
-});
+var flag = 0;
+var test = 0;
+
+function displayPlanetInfo(destinationItems) {
+  var displayPlanet = destinationItems.map(function (item) {
+    //console.log(item);
+    return "<article id=\"destination-info\" class=\"destination-info flow\">\n      <h2 id=\"planet-name\" class=\"ff-serif fs-800 uppercase\">".concat(item.name, "</h2>\n  \n      <p id=\"planet-desc\">").concat(item.description, "</p>                  \n      \n      <div class=\"flex destination-meta\">\n        <div>\n          <h3 class=\"text-accent fs-200 uppercase\">Avg.Distance</h3>\n          <p id=\"planet-distance\" class=\"ff-serif uppercase\">").concat(item.distance, "</p>\n        </div>\n        <div>\n          <h3 class=\"text-accent fs-200 uppercase\">Est. travel time</h3>\n          <p id=\"planet-travel\" class=\"ff-serif uppercase\">").concat(item.travel, "</p>\n        </div>\n      </div>    \n    </article>");
+  }); // ${item.images.png}
+
+  displayPlanet = displayPlanet.join(""); //console.log(displayPlanet);  
+  // document.getElementById("planet-img").src = planetImage;
+
+  if (flag === 0) {
+    destinationInfo.innerHTML = " <h2 id=\"planet-name\" class=\"ff-serif fs-800 uppercase\">Moon</h2>\n\n    <p id=\"planet-desc\">See our planet as you\u2019ve never seen it before. A perfect relaxing trip away to help\n    regain perspective and come back refreshed. While you\u2019re there, take in some history\n    by visiting the Luna 2 and Apollo 11 landing sites.</p>                  \n    \n    <div class=\"flex destination-meta\">\n      <div>\n        <h3 class=\"text-accent fs-200 uppercase\">Avg.Distance</h3>\n        <p id=\"planet-distance\" class=\"ff-serif uppercase\">384,400 km</p>\n      </div>\n      <div>\n        <h3 class=\"text-accent fs-200 uppercase\">Est. travel time</h3>\n        <p id=\"planet-travel\" class=\"ff-serif uppercase\">3 days</p>\n      </div>\n    </div>   ";
+  } else {
+    destinationInfo.innerHTML = displayPlanet;
+  }
+}
+
+function displayPlanetName() {
+  var planetName = destination.reduce(function (values, item) {
+    if (!values.includes(item.name)) {
+      values.push(item.name);
+    }
+
+    return values;
+  }, []); // planetFilter.forEach(function(btn){
+  //   btn.addEventListener("click", function(e){
+  //     test++;    
+  //     console.log(planetFilter);
+  //   });
+  // })
+
+  var planetBtns = planetName.map(function (name) {
+    return "<button data-id=\"".concat(name, "\" aria-selected=\"false\" class=\"text-accent uppercase letter-spacing-2 planet\">").concat(name, "</button>");
+  }).join("");
+  planetList.innerHTML = planetBtns;
+  var planetFilter = planetList.querySelectorAll(".planet"); // console.log(planetFilter);
+
+  planetFilter.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      flag++; //console.log(e.currentTarget.dataset);        
+
+      var name = e.currentTarget.dataset.id;
+      var activeStates = e.currentTarget.getAttribute("aria-selected"); //console.log(planetFilter.length);
+
+      planetFilter.forEach(function (f) {
+        return f.classList.remove("active");
+      });
+      e.target.classList.toggle("active");
+      var planetName = destination.filter(function (planetItem) {
+        //console.log(planetItem.name);
+        if (planetItem.name === name) {
+          return planetItem;
+        }
+      });
+      var planetImage = destination.filter(function (planetItem) {
+        if (planetItem.name === name) {
+          document.getElementById("planet-img").src = planetItem.images.png;
+          console.log(document.getElementById("planet-img").src);
+        }
+      });
+      displayPlanetInfo(planetName);
+    });
+  });
+} // fetch('./data.json').then(response => {
+//     console.log(response);
+//     return response.json();
+//   }).then(data => {
+//     // Work with JSON data here
+//     console.log(data);
+//   }).catch(err => {
+//     // Do something for an error here
+//     console.log("Error Reading data " + err);
+//   });
+// const planetName = document.getElementById("planet-name");
+// const container = document.getElementById("container");
+// const planet = container.querySelectorAll(".planet");
+// const moon = document.getElementById("Moon");
+// const mars = document.getElementById("Mars");
+// for(var i = 0; i < planet.length; i++)
+// {
+//     planet[i].addEventListener("click", () => {
+//         var current = document.getElementsByClassName("active");
+//         current[0].className = current[0].className.replace(" active", "");
+//         this.className += " active";        
+//     })
+// }
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -155,7 +292,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49544" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57461" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

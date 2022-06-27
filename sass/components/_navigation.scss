@@ -1,30 +1,30 @@
 @use "../abstract/config" as *;
 
-.logo{
-    padding-top: 2rem;
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+// .logo{
+//     padding-top: 2rem;
+//     padding-left: 3.5rem;
+//     padding-right: 3.5rem;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
 
-    img{
-        cursor: pointer;
-    }
-}
+//     img{
+//         cursor: pointer;
+//     }
+// }
 
 
-@include media-md {
-    .icon-hamburger{
-        display: none;
-    }
-    .icon-logo{
-        padding-top: 2rem;
-    }
-  }
+// @include media-md {
+//     .icon-hamburger{
+//         display: none;
+//     }
+//     .icon-logo{
+//         padding-top: 2rem;
+//     }
+//   }
 
-  @include media-lg{
-    .icon-logo{
-        padding-top: 0rem;
-    }
-  }
+//   @include media-lg{
+//     .icon-logo{
+//         padding-top: 0rem;
+//     }
+//   }
