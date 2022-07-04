@@ -391,18 +391,20 @@
     cursor: pointer;
     border-radius: 50%;
     aspect-ratio: 1;
-    background-color:hsl( 0 0% 100% /.17);
+    background-color: hsl( 0 0% 100%  / .17);
     border: 0;
     padding: .5em;
 }
 
 .dots-indicator > *:hover{
-    background-color: hsl(0 0% 100%/ .5);    
+    background-color: hsl( 0 0% 100% / .5);    
 }
 
 .dots-indicator > .active{
-    background-color: hsl( 0 0% 100%/ 1);    
+    background-color: hsl( 0 0% 100%  / 1);    
 }
+
+
 
 .number-list > *{
     cursor: pointer;
@@ -422,7 +424,7 @@
 }
 
 .number-list > .active{
-    background-color: hsl( $clr-white) ;
+    background-color: hsl( 0 0% 100% ) ;
     color: hsl( $clr-dark);
 }
 

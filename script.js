@@ -92,14 +92,7 @@ function displayPlanetInfo(destinationItems){
     </article>`
     })
 
-
-  // ${item.images.png}
-
-
   displayPlanet = displayPlanet.join("");
-  //console.log(displayPlanet);  
-  
-  // document.getElementById("planet-img").src = planetImage;
   
   if(flag === 0){
     destinationInfo.innerHTML = ` <h2 id="planet-name" class="ff-serif fs-800 uppercase">Moon</h2>
@@ -136,13 +129,6 @@ function displayPlanetName(){
     },
     []
   );
-  
-  // planetFilter.forEach(function(btn){
-  //   btn.addEventListener("click", function(e){
-  //     test++;    
-  //     console.log(planetFilter);
-  //   });
-  // })
   const planetBtns = planetName
     .map(function(name){
       return `<button data-id="${name}" aria-selected="false" class="text-accent uppercase letter-spacing-2 planet">${name}</button>`
@@ -166,7 +152,7 @@ function displayPlanetName(){
         const planetName = destination.filter(function(planetItem){
           //console.log(planetItem.name);
           if(planetItem.name === name){
-            return planetItem;            
+            return planetItem;                    
           }
         })  
         const planetImage = destination.filter(function(planetItem){
@@ -180,30 +166,256 @@ function displayPlanetName(){
     })
 }
 
+// Crew
+
+const crew =  [
+  {
+    "name": "Douglas Hurley",
+    "id": "1",
+    "images": {
+      "png": "./assets/crew/image-douglas-hurley.png",
+      "webp": "./assets/crew/image-douglas-hurley.webp"
+    },
+    "role": "Commander",
+    "bio": "Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2."
+  },
+  {
+    "name": "Mark Shuttleworth",
+    "id": "2",
+    "images": {
+      "png": "./assets/crew/image-mark-shuttleworth.png",
+      "webp": "./assets/crew/image-mark-shuttleworth.webp"
+    },
+    "role": "Mission Specialist",
+    "bio": "Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the Linux-based Ubuntu operating system. Shuttleworth became the first South African to travel to space as a space tourist."
+  },
+  {
+    "name": "Victor Glover",
+    "id": "3",
+    "images": {
+      "png": "./assets/crew/image-victor-glover.png",
+      "webp": "./assets/crew/image-victor-glover.webp"
+    },
+    "role": "Pilot",
+    "bio": "Pilot on the first operational flight of the SpaceX Crew Dragon to the International Space Station. Glover is a commander in the U.S. Navy where he pilots an F/A-18.He was a crew member of Expedition 64, and served as a station systems flight engineer."
+  },
+  {
+    "name": "Anousheh Ansari",
+    "id": "4",
+    "images": {
+      "png": "./assets/crew/image-anousheh-ansari.png",
+      "webp": "./assets/crew/image-anousheh-ansari.webp"
+    },
+    "role": "Flight Engineer",
+    "bio": "Anousheh Ansari is an Iranian American engineer and co-founder of Prodea Systems. Ansari was the fourth self-funded space tourist, the first self-funded woman to fly to the ISS, and the first Iranian in space."
+  }
+]
+
+const crewInfo = document.querySelector(".crew-info");
+const crewList = document.querySelector(".crew-list");
+
+window.addEventListener("DOMContentLoaded", function () {
+  displayCrewInfo(crew);
+  displayCrewName();  
+});
+
+let flag2 = 0;
+
+function displayCrewInfo(crewItems){
+
+    let displayCrew = crewItems.map(function(item){
+      //console.log(item);
+      return `<header class="flow flow--space--small">
+      <h2 class="ff-serif fs-600 uppercase">${item.role}</h2>
+      <p class="ff-serif fs-700 text-white">${item.name}</p>
+    </header>
+    <p>${item.bio}</p>`
+    })
+
+    
+
+  displayCrew = displayCrew.join("");
+  
+  if(flag2 === 0){
+    crewInfo.innerHTML = ` <header class="flow flow--space--small">
+    <h2 class="ff-serif fs-600 uppercase">Commander</h2>
+    <p class="ff-serif fs-700 text-white">Douglas Hurley</p>
+  </header>
+  <p>Douglas Gerald Hurley is an American engineer, former Marine Corps pilot
+      and former NASA astronaut. He launched into space for the third time as
+      commander of Crew Dragon Demo-2.</p> `
+
+  }else{
+    crewInfo.innerHTML = displayCrew;
+  }
+  
+}
 
 
-// fetch('./data.json').then(response => {
-//     console.log(response);
-//     return response.json();
-//   }).then(data => {
-//     // Work with JSON data here
-//     console.log(data);
-//   }).catch(err => {
-//     // Do something for an error here
-//     console.log("Error Reading data " + err);
-//   });
+function displayCrewName(){
+  const crewName = crew.reduce(
+    function (values, item){
+      if(!values.includes(item.id)){
+        values.push(item.id);
+      }
+      return values;
+    },
+    []
+  );
+  const crewBtns = crewName
+    .map(function(id){
+      return `<button data-id="${id}" class="crew" aria-selected="false"><span class="sr-only">slide</span></button>`
+    })
+    .join("");
+      
+      crewList.innerHTML = crewBtns;
+    
+      const crewFilter = crewList.querySelectorAll(".crew");      
+      //console.log(crewFilter);
 
-// const planetName = document.getElementById("planet-name");
-// const container = document.getElementById("container");
-// const planet = container.querySelectorAll(".planet");
-// const moon = document.getElementById("Moon");
-// const mars = document.getElementById("Mars");
+    crewFilter.forEach(function(btn){
+      btn.addEventListener("click", function(e){
+        flag2++;        
+        //console.log(e.currentTarget.dataset.id);        
+        const id = e.currentTarget.dataset.id;
+        const activeStates = e.currentTarget.getAttribute("aria-selected");             
+        crewFilter.forEach(f => f.classList.remove("active"));
+        e.target.classList.toggle("active");
+        const crewName = crew.filter(function(crewItem){
+          //console.log(crewItem.id);
+          if(crewItem.id === id){
+            return crewItem;                   
+          }
+        })  
+        const crewImage = crew.filter(function(crewItem){
+          if(crewItem.id === id){
+            document.getElementById("crew-pic").src = crewItem.images.png; 
+            //console.log(document.getElementById("crew-pic").src);           
+          }
+        })      
+          displayCrewInfo(crewName);                                  
+      });            
+    })
+}
 
-// for(var i = 0; i < planet.length; i++)
-// {
-//     planet[i].addEventListener("click", () => {
-//         var current = document.getElementsByClassName("active");
-//         current[0].className = current[0].className.replace(" active", "");
-//         this.className += " active";        
-//     })
-// }
+//technology
+
+const technology =[
+  {
+    "name": "Launch vehicle",
+    "id": "1",
+    "images": {
+      "portrait": "./assets/technology/image-launch-vehicle-portrait.jpg",
+      "landscape": "./assets/technology/image-launch-vehicle-landscape.jpg"
+    },
+    "description": "A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch pad!"
+  },
+  {
+    "name": "Spaceport",
+    "id": "2",
+    "images": {
+      "portrait": "./assets/technology/image-spaceport-portrait.jpg",
+      "landscape": "./assets/technology/image-spaceport-landscape.jpg"
+    },
+    "description": "A spaceport or cosmodrome is a site for launching (or receiving) spacecraft, by analogy to the seaport for ships or airport for aircraft. Based in the famous Cape Canaveral, our spaceport is ideally situated to take advantage of the Earth’s rotation for launch."
+  },
+  {
+    "name": "Space capsule",
+    "id": "3",
+    "images": {
+      "portrait": "./assets/technology/image-space-capsule-portrait.jpg",
+      "landscape": "./assets/technology/image-space-capsule-landscape.jpg"
+    },
+    "description": "A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained."
+  }
+]
+
+const technologyInfo = document.querySelector(".technology-info");
+const technologyList = document.querySelector(".technology-list");
+
+window.addEventListener("DOMContentLoaded", function () {
+  displayTechnologyInfo(technology);
+  displayTechnologyName();  
+});
+
+let flag3 = 0;
+
+function displayTechnologyInfo(technologyItems){
+
+    let displayTechnology = technologyItems.map(function(item){
+      //console.log(item);
+      return `<header class="flow flow--space--small">
+    <h2 class="ff-serif fs-600 uppercase text-accent">The terminology...</h2>
+    <p class="ff-serif fs-700 text-white uppercase">${item.name}</p>
+    </header>
+    <p>${item.description}</p>
+    </div>`
+    })
+
+    
+
+  displayTechnology = displayTechnology.join("");
+  
+  if(flag3 === 0){
+    technologyInfo.innerHTML = `    <header class="flow flow--space--small">
+    <h2 class="ff-serif fs-600 uppercase text-accent">The terminology...</h2>
+    <p class="ff-serif fs-700 text-white uppercase">Launch vehicle</p>
+  </header>
+  <p>A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a 
+      payload from Earth's surface to space, usually to Earth orbit or beyond. Our 
+      WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall, 
+      it's quite an awe-inspiring sight on the launch pad!</p>
+</div>         `
+
+  }else{
+    technologyInfo.innerHTML = displayTechnology;
+  }
+  
+}
+
+
+function displayTechnologyName(){
+  const technologyName = technology.reduce(
+    function (values, item){
+      if(!values.includes(item.id)){
+        values.push(item.id);
+      }
+      return values;
+    },
+    []
+  );
+  const technologyBtns = technologyName
+    .map(function(id){
+      return `<button data-id="${id}" class="technology" aria-selected="true">${id}</button>`
+    })
+    .join("");
+      
+      technologyList.innerHTML = technologyBtns;
+    
+      const technologyFilter = technologyList.querySelectorAll(".technology");      
+      //console.log(crewFilter);
+
+    technologyFilter.forEach(function(btn){
+      btn.addEventListener("click", function(e){
+        flag3++;        
+        //console.log(e.currentTarget.dataset.id);        
+        const id = e.currentTarget.dataset.id;        
+        technologyFilter.forEach(f => f.classList.remove("active"));
+        e.target.classList.toggle("active");
+        const technologyName = technology.filter(function(technologyItem){
+          //console.log(crewItem.id);
+          if(technologyItem.id === id){
+            return technologyItem;                   
+          }
+        })  
+        const technologyImage = technology.filter(function(technologyItem){
+          if(technologyItem.id === id){
+            document.getElementById("technology-pic-1").src = technologyItem.images.landscape; 
+            document.getElementById("technology-pic-2").src = technologyItem.images.portrait; 
+            //console.log(document.getElementById("technology-pic-1").src);           
+          }
+        })      
+          displayTechnologyInfo(technologyName);                                  
+      });            
+    })
+}

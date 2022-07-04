@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <link rel="stylesheet" href="sass/main.scss">
+  <link rel="stylesheet" href="/dist/css/main.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&family=Bellefair&display=swap" rel="stylesheet">
@@ -28,22 +29,23 @@
     </header>
     <main id="main" class="grid-container grid-container--crew flow">
         <h1 class="numbered-title"><span aria-hidden="true">02 </span>Meet your crew</h1>
-        <img class="crew-pic" src="/assets/crew/image-douglas-hurley.png" alt="image-douglas-hurley">                
-        <div class="dots-indicator flex ff-sans-cond">
+        <img id="crew-pic" class="crew-pic" src="/assets/crew/image-douglas-hurley.png" alt="image-douglas-hurley">                
+        <div class="crew-list dots-indicator flex ff-sans-cond">
             <button class="active" aria-selected="true"><span class="sr-only">slide</span></button>
             <button aria-selected="false"><span class="sr-only">slide</span></button>
             <button aria-selected="false"><span class="sr-only">slide</span></button>
             <button aria-selected="false"><span class="sr-only">slide</span></button>
         </div>
         <div class="crew-info">
-            <header class="flow flow--space--small">
+            <!-- <header class="flow flow--space--small">
               <h2 class="ff-serif fs-600 uppercase">Commander</h2>
               <p class="ff-serif fs-700 text-white">Douglas Hurley</p>
             </header>
             <p>Douglas Gerald Hurley is an American engineer, former Marine Corps pilot
                 and former NASA astronaut. He launched into space for the third time as
-                commander of Crew Dragon Demo-2.</p>
+                commander of Crew Dragon Demo-2.</p> -->
         </div>        
     </main>          
 </body>
+<script src="script.js"></script>
 </html>
