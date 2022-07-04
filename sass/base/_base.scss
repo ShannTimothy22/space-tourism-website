@@ -1,0 +1,83 @@
+@use "../base/fonts" as *;
+
+html{
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture{
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+    font-weight: 400;
+}
+
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);
+  /* outline: 1px solid red; */
+}
+
+body{
+  font-family: $ff-sans-normal;
+  font-size: var(--fs-400);
+  background-color: hsl( $clr-dark );
+  color: hsl($clr-white);
+  line-height: 1.5;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  overflow-x: hidden;
+}
+
+img,
+picture{
+    max-width: 100%;
+    display: block;
+}
+
+input,
+button,
+textarea,
+select{
+    font: inherit;    
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::after,
+  *::before{
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+  }
+}

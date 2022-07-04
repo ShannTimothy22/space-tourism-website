@@ -1,0 +1,180 @@
+@use "../base/fonts" as *;
+@use "../abstract/config" as *;
+
+// @media only screen and (min-width: 320px){
+//     .side-nav::before{
+//         background-color: rgba($color: #000000, $alpha: .9);
+//     }
+    
+//     .side-nav{                
+//         background: hsla(0, 0%, 100%, .3);
+//         position: fixed;    
+//         top: 0;
+//         right: 0;    
+//         height: 100%;
+//         width: 254px;
+//         transition: all 0.5s ease-in-out;
+    
+//         .icon-close{
+//             position: relative;
+//             top: 5%;
+//             left: 80%;
+//             cursor: pointer;
+//         }
+    
+//         .nav-list{
+//             transform: translateY(100%);
+//             font-family: $ff-sans-cond;
+//         }
+    
+//         .nav-links{
+//             margin-left: 2rem;
+//             line-height: 3rem;
+//             font-size: 16px;
+//             text-transform: uppercase;
+//             letter-spacing: .3rem;
+    
+//             &__number{
+//                 margin-right: 1rem;
+//                 font-weight: 700;
+//                 letter-spacing: .2rem;
+//             }
+//         }
+//     }
+    
+//     .side-nav::before{
+//         content: '';
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+//         bottom: 0;
+//         left: 0;
+//         filter: blur(1rem);
+//         z-index: -1;
+//         margin: -18px;
+//     }
+// }
+
+// @media only screen and (min-width: 768px) {    
+
+//     .side-nav::before{
+//         background-color: rgba($color: #000000, $alpha: .9);
+//     }
+
+//     .side-nav{
+//         position: absolute;
+//         top: 0;
+//         right: 0;                                
+//         height: auto;        
+//         width: 60%;         
+//         overflow: hidden;
+//         background-color: rgba($color: #000000, $alpha: .9);                        
+
+//         .nav-list{            
+//             display: flex;                  
+//             margin: 2rem 0 0;
+//             transform: translateY(0%);            
+//         }
+
+//         .nav-links{
+//             margin-left: 2rem;            
+//             line-height: 1rem;
+//             font-size: 14px;
+//             text-transform: uppercase;
+//             letter-spacing: 2.3px;                   
+    
+//             &__number{                                
+//                 display: none;
+//                 margin-right: 1rem;
+//                 font-weight: 700;                
+//             }
+            
+//         }
+
+//         .icon-close{
+//             display: none;
+//         }
+//     }
+
+//     .side-nav::before{
+//         content: '';
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+//         bottom: 0;
+//         left: 0;
+//         filter: blur(1rem);
+//         z-index: -1;
+//         margin: -35px;
+//     }
+
+//     .active{
+//         padding: 0 0 2rem 0;
+//         border-bottom: .2rem solid white;
+//     }
+//   }
+
+//   @media only screen and (min-width: 1440px) {
+//     .nav-bar{
+//         display: flex;
+//         margin-top: 2rem;
+//         overflow: hidden;
+
+//         .logo{
+//             margin-left: 1rem;
+//             margin-top: 0rem;
+//             border-left-style: none;
+//         }
+
+//     }
+//     .side-nav{        
+//         position: relative;
+//         top: 0px;
+//         left: 40%;
+//         height: auto;        
+//         width: 100%;        
+//         background-color: rgba($color: #000000, $alpha: .9);     
+
+//         .nav-list{            
+//             display: flex;                                          
+//         }
+
+//         .nav-links{
+//             margin-left: 2rem;
+//             padding: 1rem;
+//             line-height: 1rem;
+//             font-size: 14px;
+//             text-transform: uppercase;
+//             letter-spacing: 2.3px;     
+//             padding-bottom: 2rem;  
+    
+//             &__number{                                
+                
+//                 margin-right: 1rem;
+//                 font-weight: 700;                
+//             }
+//         }
+
+//         .icon-close{
+//             display: none;
+//         }
+
+//     }
+
+//     .side-nav::before{
+//         content: '';
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+//         bottom: 0;
+//         left: 0;
+//         filter: blur(1rem);
+//         z-index: -1;
+//         margin: -35px;
+//     }
+
+//     .active{
+//         padding: 0 0 2rem 0;
+//         border-bottom: .2rem solid white;
+//     }
+//   }
